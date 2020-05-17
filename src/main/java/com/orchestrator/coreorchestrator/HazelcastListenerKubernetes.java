@@ -21,7 +21,9 @@ public class HazelcastListenerKubernetes {
 		config.getNetworkConfig().getJoin().getKubernetesConfig().setEnabled(true)
 		      .setProperty("namespace", "orch-project")
 		      .setProperty("service-name", "hzport")
+			  .setProperty("kubernetes-master","5701")
 			  .setProperty("service-port","5701");
+		
 		return config;
 	}
 	
