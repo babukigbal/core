@@ -17,13 +17,10 @@ public class HazelcastListenerKubernetes {
 		System.out.println("Inside openshift profile Hazelcast Listener");
 
 		Config config = new Config();
-		NetworkConfig network = config.getNetworkConfig();
-		network.setPort(5701).setPortCount(20);
-		network.setPortAutoIncrement(true);
-		JoinConfig join = network.getJoin();
-		join.getMulticastConfig().setEnabled(false);
-	    join.getKubernetesConfig().setEnabled(true);
-		config.setInstanceName("hazelcast-instance");
+		config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
+		config.getNetworkConfig().getJoin().getKubernetesConfig().setEnabled(true)
+		      .setProperty("namespace", "orch-project")
+		      .setProperty("service-name", "hzport");
 		return config;
 	}
 	
