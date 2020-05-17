@@ -7,8 +7,10 @@ import java.util.logging.Logger;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Profile("NotNeeded")
 @Component
 public class JmsTestRouter extends RouteBuilder {
 
