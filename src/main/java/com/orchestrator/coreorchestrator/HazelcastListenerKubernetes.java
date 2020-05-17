@@ -14,7 +14,7 @@ public class HazelcastListenerKubernetes {
 
 	@Bean
 	public Config hazelCastConfig() {
-		System.out.println("Inside openshift profile Hazelcast Listener");
+		System.out.println("Inside openshift profile Hazelcast Listener- Updated");
 
 		Config config = new Config();
 		config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
