@@ -8,8 +8,6 @@ import org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfigura
 //import com.hazelcast.core.Hazelcast;
 //import com.hazelcast.core.HazelcastInstance;
 
-import com.hazelcast.core.Hazelcast;
-import com.hazelcast.core.HazelcastInstance;
 
 
 @SpringBootApplication(exclude = ActiveMQAutoConfiguration.class)
@@ -17,12 +15,7 @@ import com.hazelcast.core.HazelcastInstance;
 
 public class CoreorchestratorApplication {
 
-	
 	public static void main(String[] args) {
-
-		HazelcastInstance hazelcastInstance=Hazelcast.newHazelcastInstance();
-  
-		hazelcastInstance.getQueue("TransactionsQueue").addItemListener(new MyQueueListener(), true);
 		SpringApplication.run(CoreorchestratorApplication.class, args);
 	}
 	

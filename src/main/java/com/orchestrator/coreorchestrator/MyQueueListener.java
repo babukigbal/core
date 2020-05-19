@@ -2,6 +2,8 @@ package com.orchestrator.coreorchestrator;
 
 import org.springframework.stereotype.Component;
 
+import com.hazelcast.client.HazelcastClient;
+import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
@@ -15,10 +17,11 @@ import common.FinancialTransaction;
 public class MyQueueListener implements  ItemListener<Object> {
 	HazelcastInstance hazelcastInstance;
 
-	MyQueueListener(){
+	MyQueueListener(HazelcastInstance hazelcastInstance){
 
 		System.out.println("Constructor MyQueueListener");
-		this.hazelcastInstance=Hazelcast.newHazelcastInstance();
+		this.hazelcastInstance=hazelcastInstance;
+		this.hazelcastInstance.getQueue("TransactionsQueue").addItemListener(this, true);
 	}
 @Override
 public void itemAdded(ItemEvent<Object> item) {
